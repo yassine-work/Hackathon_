@@ -7,8 +7,9 @@ def start():
     welcome="Welcome, ladies and gentlemen, to the ultimate battleground, where legends are made and history is written! I’m your host, bringing you the fastest plays, sharpest calls, and spectacular highlights from today’s high-stakes tournament. Get ready for insane strategies, jaw-dropping moves, and edge-of-your-seat action as our top contenders prove why they deserve to be called the best in the game. Strap in—because the only thing faster than the gameplay tonight is the excitement in the arena!"
     #add text to speech 
     #-------------------------
+
     
-def get_commentary_from_lcu_llm(event_data, llm_model="gpt-4", api_key="YOUR_API_KEY"):
+def get_commentary_from_lcu_llm(event_data, llm_model=GEMINI_LLM_MODEL, api_key=GEMINI_API_KEY):
     """
     Sends LCU event JSON to an LLM to generate professional esports commentary.
 
@@ -43,7 +44,7 @@ def get_commentary_from_lcu_llm(event_data, llm_model="gpt-4", api_key="YOUR_API
     ]
 
     # API call
-    url = f"https://api.openai.com/v1/chat/completions"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_LLM_MODEL}:generateContent?key={GEMINI_API_KEY}"
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
